@@ -1,0 +1,12 @@
+.ContactList {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgb(237, 237, 237);
+  border-radius: 8px;
+  padding: 16px;
+}
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
