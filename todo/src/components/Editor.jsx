@@ -1,6 +1,11 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
+import { TodoDispatchContext } from "../App";
 import "./Editor.css";
-const Editor = ({ onCreate }) => {
+
+const Editor = () => {
+  // context (구조분해할당)
+  const { onCreate } = useContext(TodoDispatchContext);
+
   // input
   const [content, setContent] = useState("");
   const inputRef = useRef();
