@@ -1,9 +1,11 @@
+import { memo } from "react";
 import "./ContactItem.css";
 
 const ContactItem = ({ contact, onDelete }) => {
   const handleDelete = () => {
     onDelete(contact.id);
   };
+
   return (
     <div className="ContactItem">
       <div className="name">{contact.name}</div>
@@ -14,4 +16,6 @@ const ContactItem = ({ contact, onDelete }) => {
     </div>
   );
 };
-export default ContactItem;
+
+const memoizedContactItem = memo(ContactItem);
+export default memoizedContactItem;
