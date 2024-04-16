@@ -1,4 +1,4 @@
-import { useCallback, useRef, useReducer } from "react";
+import { useRef, useReducer, useCallback, createContext, useMemo } from "react";
 import "./App.css";
 import ContactEditor from "./components/ContactEditor";
 import ContactList from "./components/ContactList";
@@ -14,6 +14,10 @@ function reducer(state, action) {
   }
 }
 
+// context
+export const ContactStateContext = createContext();
+export const ContactDispatchContext = createContext();
+
 function App() {
   const [contacts, dispatch] = useReducer(reducer, []);
   const idRef = useRef(0);
@@ -28,11 +32,21 @@ function App() {
     dispatch({ type: "DELETE", targetId });
   }, []);
 
+  // Memoization
+  const memoizedDispatch = useMemo(() => {
+    return { onCreate, onDelete };
+  }, []);
+
   return (
     <div className="App">
       <h1>Contact List</h1>
-      <ContactEditor onCreate={onCreate} />
-      <ContactList contacts={contacts} onDelete={onDelete} />
+      {/* context */}
+      <ContactStateContext.Provider value={contacts}>
+        <ContactDispatchContext.Provider value={memoizedDispatch}>
+          <ContactEditor />
+          <ContactList />
+        </ContactDispatchContext.Provider>
+      </ContactStateContext.Provider>
     </div>
   );
 }

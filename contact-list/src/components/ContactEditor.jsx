@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ContactDispatchContext } from "../App";
 import "./ContactEditor.css";
 
-const ContactEditor = ({ onCreate }) => {
+const ContactEditor = () => {
+  // context
+  const { onCreate } = useContext(ContactDispatchContext);
+
   const [contact, setContact] = useState({ name: "", email: "" });
 
   const onInputChange = (e) => {

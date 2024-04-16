@@ -1,7 +1,11 @@
-import { memo } from "react";
+import { useContext, memo } from "react";
+import { ContactDispatchContext } from "../App";
 import "./ContactItem.css";
 
-const ContactItem = ({ contact, onDelete }) => {
+const ContactItem = ({ contact }) => {
+  // context
+  const { onDelete } = useContext(ContactDispatchContext);
+
   const handleDelete = () => {
     onDelete(contact.id);
   };
