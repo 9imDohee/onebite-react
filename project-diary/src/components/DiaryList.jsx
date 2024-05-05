@@ -18,9 +18,9 @@ const DiaryList = ({ data }) => {
     // 정렬된 새로운 배열을 반환
     return data.toSorted((a, b) => {
       if (sortType === "oldest") {
-        return Number(a.createdTime) - Number(b.createdTime);
+        return Number(a.createdDate) - Number(b.createdDate);
       } else {
-        return Number(b.createdTime) - Number(a.createdTime);
+        return Number(b.createdDate) - Number(a.createdDate);
       }
     });
   };

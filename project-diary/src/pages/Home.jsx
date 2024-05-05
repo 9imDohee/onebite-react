@@ -28,13 +28,13 @@ const getMonthlyData = (pivotDate, data) => {
     (item) => beginTime <= item.createdDate && item.createdDate <= endTime
   );
 };
+
 const Home = () => {
   const data = useContext(DiaryStateContext);
 
   const [pivotDate, setPivotDate] = useState(new Date());
 
   const monthlyData = getMonthlyData(pivotDate, data);
-  console.log(monthlyData);
 
   const onDecreaseMonth = () => {
     setPivotDate(new Date(pivotDate.getFullYear(), pivotDate.getMonth() - 1));

@@ -1,6 +1,6 @@
-import "./App.css";
 import { useReducer, useRef, createContext } from "react";
 import { Routes, Route } from "react-router-dom";
+import "./App.css";
 import Home from "./pages/Home";
 import Diary from "./pages/Diary";
 import New from "./pages/New";
@@ -45,26 +45,26 @@ function App() {
   const idRef = useRef(2);
 
   // 새로운 일기 추가
-  const onCreate = (createdDate, emtionId, content) => {
+  const onCreate = (createdDate, emotionId, content) => {
     dispatch({
       type: "CREATE",
       data: {
         id: idRef.current++,
         createdDate,
-        emtionId,
+        emotionId,
         content,
       },
     });
   };
 
   //  기존 일기 수정
-  const onUpdate = (id, createdDate, emtionId, content) => {
+  const onUpdate = (id, createdDate, emotionId, content) => {
     dispatch({
       type: "UPDATE",
       data: {
         id,
         createdDate,
-        emtionId,
+        emotionId,
         content,
       },
     });
